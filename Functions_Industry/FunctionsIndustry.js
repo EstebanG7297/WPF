@@ -26,16 +26,18 @@ function uidnCreate(username,password,passhint){
 UIDN = uidnCreate(username,password,passHint);
 
 while (whileCondition==false){
-username = prompt("re-Enter your username");
-password = prompt("re-Enter your password");
-passHint = prompt("re-Enter your hint for your password");
+username = prompt("re-Enter your username (/h for your hint | /e to exit program)");
+password = prompt("re-Enter your password (/h for your hint | /e to exit program)");
 
 verify = uidnCreate(username,password,passHint);
 
 if(UIDN!=verify){console.log("Incorrect, Please re-try")}
-else if(username.toLowerCase()=="end"||passHint.toLowerCase()=="end"||password.toLowerCase()=="end"){
+else if(username.toLowerCase()=="/e"||password.toLowerCase()=="/e"){
     whileCondition = true;
     break;}
+else if(username.toLowerCase()=="/h"||password.toLowerCase()=="/h"){
+    console.log(passHint);
+}
 else{console.log("welcome");
     whileCondition = true;
     break;}
