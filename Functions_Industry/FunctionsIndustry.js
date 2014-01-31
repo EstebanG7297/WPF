@@ -10,9 +10,9 @@ var verify;
 var whileCondition = false;
 
 function uidnCreate(username,password,passhint){
-    var pt1 = Math.floor((Math.random()*username.length));
-    var pt2 = Math.floor((Math.random()*password.length));
-    var pt3 = Math.floor((Math.random()*passhint.length));
+    var pt1 = Math.floor((username.length%50.85));
+    var pt2 = Math.floor((password.length%18.5));
+    var pt3 = Math.floor((passhint.length%12.5));
 
     pt1 = pt1 + "";
     pt2 = pt2 + "";
@@ -26,18 +26,12 @@ function uidnCreate(username,password,passhint){
 UIDN = uidnCreate(username,password,passHint);
 
 while (whileCondition==false){
-username = prompt("re-Enter your username (/h for your hint | /e to exit program)");
+    console.clear();
+    console.log("Hint: " + passHint);
 password = prompt("re-Enter your password (/h for your hint | /e to exit program)");
-
 verify = uidnCreate(username,password,passHint);
 
 if(UIDN!=verify){console.log("Incorrect, Please re-try")}
-else if(username.toLowerCase()=="/e"||password.toLowerCase()=="/e"){
-    whileCondition = true;
-    break;}
-else if(username.toLowerCase()=="/h"||password.toLowerCase()=="/h"){
-    console.log(passHint);
-}
 else{console.log("welcome");
     whileCondition = true;
     break;}
